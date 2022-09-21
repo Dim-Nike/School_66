@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@600&family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Roboto&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href='{% static "lecture/css/main.css" %}' type="text/css"/>
+    <link rel="stylesheet" href='https://use.fontawesome.com/releases/v5.8.2/css/all.css'>
+
+
+
+</head>
+        <header id="header" class="header_land">
+            <div class="container">
+                <div class="btnland">
+                    <button id="login" class="button">
+                        <span>Личный кабинет</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+{% block title %}{{ title }}{% endblock %}
+        <div class="features">
+            <h1>{{ title }}</h1>
+        </div>
+{% block content %}
+    {% if user.is_authenticated %}
+            <h1>{{ user.username }}</h1>
+    {% endif %}
+    {% if user.is_superuser %}
+        <h1>Супер юзер</h1>
+    {% endif %}
+        <h1 class="land">{{ title_page }}</h1>
+            <div class="subjects">
+            {% for subject in subjects %}
+                {% if subject.userClass == user.catClassUser %}
+                    <div class="subject">
+                        <div class="sab">
+                            <a href="{% url 'details_lecture' subject.id%}">{{ subject.name_subjects }}</a>
+                            <p><img src="{{ subject.subjects.url }}" alt=""></p>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+{% endfor %}
+</div>
+{% endblock %}
+<footer id="footer" class="footer_land">
+    <div class="container">
+        <div class="menu">
+            <nav class="one">
+                <ul>
+                    <a href="{% url 'landing' %}"><object id="test_1" type="image/svg+xml" data="{% static 'lecture/img/Icon.svg'%}"></object></a>
+                    <a href=""><object id="test_2" type="image/svg+xml" data="{% static 'lecture/img/Personalarea.svg'%}"></object></a>
+                    <a href=""><object id="test_3" type="image/svg+xml" data="{% static 'lecture/img/Tests.svg'%}"></object></a>
+                    <a href="{% url 'title_news' %}"><object id="test_4" type="image/svg+xml" data="{% static 'lecture/img/Nums.svg'%}"></object></a>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

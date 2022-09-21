@@ -1,0 +1,18 @@
+{% extends 'lecture/index.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+{% for new in news %}
+<div class="section">
+    <spon>
+        <h1>{{ new.title }}</h1>
+        <h2>{{ new.subtitle }}</h2>
+        <p>{{ new.date }}</p>
+        <a href="{% url 'detail-news' new.id %}" class="btn btn-primary">Подробнее</a>
+    </spon>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}

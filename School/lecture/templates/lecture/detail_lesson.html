@@ -1,0 +1,30 @@
+{% extends 'lecture/index.html' %}
+
+{% block content %}
+<div class="detailstudy">
+    <h1>{{ lesson.title }}</h1>
+    <h2>{{ lesson.subtitle }}</h2>
+    <p>{{ lesson.full_text }}</p>
+    <h3>Проверь себя!</h3>
+</div>
+{% if lesson.cards %}
+<div class="kartochkayes">
+    <img src="{{ lesson.cards.url }}" alt="">
+</div>
+{% else %}
+<div class="kartochkano">
+    <p>Фотографии нет</p>
+</div>
+{% endif %}
+<div class="detailstdata">
+    <p>{{ lesson.date }}</p>
+</div>
+<div class="detailstbtn">
+    <button class="lecturebtn">
+        <a href=""></a>
+        <p>Пройти тест</p>
+    </button>
+</div>
+{% endblock %}
+
+<!--<img src="{{ lesson.cards.url }}" alt="">-->

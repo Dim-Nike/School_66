@@ -1,0 +1,26 @@
+{% extends 'lecture/index.html' %}
+
+{% block title %}{{ title_page }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<div>
+    <div class="prarea">
+      <p class="user_data-primary"> {{ user.first_name }}</p>
+      <p class="user_data-primary"> {{ user.last_name }}</p>
+      <p class="user_data-primary">Класс: {{ catClassUser }}</p>
+      <p class="user_data-secondary"> {{ user.username }}</p>
+      <p class="user_data-secondary"> {{ user.email }}</p>
+
+      <p>Фото: <img src="{{ user.user_photo.url }}" alt="">{{ user.photo }}</p>
+<!--     todo   доделать фото-->
+
+     {% if user.is_superuser %}
+        <a href="{% url 'send_notify' %}" class="btn btn-primary">Уведомить</a>
+        <a href="{% url 'send_mail' %}" class="btn btn-warning">Отправить почту</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

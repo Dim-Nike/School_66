@@ -1,0 +1,18 @@
+{% extends 'lecture/index.html' %}
+
+{% block title %}{{ data.title }}{% endblock %}
+
+{% block content %}
+
+    {{ lecture.full_text }}
+        <div class="ramka">
+    {% for lecture in lectures %}
+        {% if lecture.is_active %}
+            <div class="studymaterials"> 
+                <h1>{{ lecture.title }}</h1>
+                <a href="{% url 'detail_lesson' lecture.id %}" class="btn btn-success">Читать лекцию</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+        </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'lecture/index.html' %}
+
+{% block title %}Подробнее{% endblock %}
+
+{% block content %}
+<div class="detail-news">
+        <h1>{{ detail_news.subtitle }}</h1>
+        <h2>{{ detail_news.title }}</h2>
+        <p>{{ detail_news.full_text }}</p>
+        <p1>{{ detail_news.date }}</p1>
+</div>
+
+{% endblock %}

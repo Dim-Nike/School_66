@@ -1,0 +1,28 @@
+{% extends 'lecture/index.html' %}
+
+{% block title %}{{ data.title }}{% endblock %}
+
+{% block content %}
+
+{% for el in test %}
+    <h2>Название теста {{ el.name_test }}</h2>
+    <h2>Дата начала теста {{ el.start_date }}</h2>
+    <h2>Дата окончания теста {{ el.end_date }}</h2>
+    <h2>Время прохождения теста {{ distance }} минут</h2>
+    {% for answer in el.answer.all %}
+        <h2>{{ answer }}</h2>
+    <form action="/result" method="post" name="user_ask">
+        {% csrf_token %}
+        <h5><select name="list">
+        {% for ask in answer.ask.all %}
+            <h5><option value="{{ answer }}||{{ ask }}">{{ ask }}</option></h5>
+        {% endfor %}
+        </select></h5>
+
+    {% endfor %}
+        <p><input type="submit" value="Сохранить" name="ask"></p>
+    </form>
+
+{% endfor %}
+
+{% endblock %}

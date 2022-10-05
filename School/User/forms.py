@@ -10,13 +10,15 @@ from django.contrib.auth.models import Group
 
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input',
-                                                                            'placeholder': 'Enter your login'}))
+                                                                            'placeholder': 'Enter your login',
+                                                                            'required': 'Your Name is Required'}))
     password1 = forms.CharField(label='Пароль', widget=forms.TextInput(attrs={'class': 'form-input',
                                                                               'placeholder': 'Enter your password'}))
     password2 = forms.CharField(label='Повтор пароля', widget=forms.TextInput(attrs={'class': 'form-input',
                                                                                      'placeholder': 'Enter your password'}))
     first_name = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input',
-                                                                           'placeholder': 'Enter your first name'}))
+                                                                           'placeholder': 'Enter your first name',
+                                                                        }))
     last_name = forms.CharField(label='Фамилия', widget=forms.TextInput(attrs={'class': 'form-input',
                                                                            'placeholder': 'Enter your last name'}))
     email = forms.CharField(label='Эл. адрес', widget=forms.EmailInput(attrs={'class': 'form-input',

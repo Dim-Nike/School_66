@@ -1,6 +1,9 @@
 {% extends 'lecture/index.html' %}
 
 {% block content %}
+
+{% for lesson in lessons %}
+
 <div class="detailstudy">
     <h1>{{ lesson.title }}</h1>
     <h2>{{ lesson.subtitle }}</h2>
@@ -10,7 +13,7 @@
 {% if lesson.cards %}
 <div class="kartochkayes">
     <img src="{{ lesson.cards.url }}" alt="">
-</div>
+</div>s
 {% else %}
 <div class="kartochkano">
     <p>Фотографии нет</p>
@@ -20,11 +23,23 @@
     <p>{{ lesson.date }}</p>
 </div>
 <div class="detailstbtn">
-    <button class="lecturebtn">
-        <a href=""></a>
-        <p>Пройти тест</p>
-    </button>
+    {% if now_time < test_time %}
+        {% if count_attempt >= 1 %}
+            <button class="lecturebtn">
+                    <a href="{% url 'test' lesson.test.id %}"><p>Пройти тест</p></a>
+                    <h3>У тебя осталось {{ count_attempt }} попытки</h3>
+            </button>
+        {% else %}
+            <h2>Тест недоступен, попытки закончены</h2>
+        {% endif %}
+    {% else %}
+        <h1>Время теста истекло!</h1>
+    {% endif %}
 </div>
+{% endfor %}
+
+
+
 {% endblock %}
 
 <!--<img src="{{ lesson.cards.url }}" alt="">-->

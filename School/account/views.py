@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 # Create your views here.
 from User.models import CustomUser
+from lecture.models import TestResult
 from django.contrib.auth import get_user_model
 
 
@@ -19,21 +20,33 @@ def send_msg(req):
     person = CustomUser.objects.order_by('catClassUser')
     users = get_user_model()
     persons = users.objects.all()
-    send_mail_msg = send_mail(f'Вас привествует, 14 школа!',
-                              f'Добрый день {person[0].password}\n',
-                              'officialtriggermobile@gmail.com',
-                              ['nikitin_dima2000dn@mail.ru'], fail_silently=False)
+    test_result = TestResult.objects.order_by('test')
+
+    for show in test_result:
+
+        print(f'Test - {show.test}\n'
+              f'User - {show.user}\n'
+              f'Date - {show.date}\n'
+              f'Result test - {show.result_test}\n\n')
+
     for person in persons:
         print(f'Имя: {person.username}')
 
     send_msg_mail = ''
+
+    result = ''
+    for person in persons:
+        for show in test_result:
+            if person.first_name + " " + person.last_name == show.user:
+                result += f'Наименование теста - {show.test}\nПользователь - {show.user}\nДата прохождения теста - {show.date}\nКоличество баллов - {show.result_test}\n\n'
 
     for person in persons:
         send_msg_mail = send_mail(f'Вас привествует, 14 школа!',
                                   f'Добрый день, {person.last_name} {person.first_name}\n'
                                   f'Ваш логин: {person.username}\n'
                                   f'Ваш класс: {person.catClassUser}\n'
-                                  f'Ваш пароль: {person.password}',
+                                  f'Ваш пароль: {person.password}\n'
+                                  f'Информация о тестах\n\n{result}',
                                   'officialtriggermobile@gmail.com',
                                   [person.email], fail_silently=False)
     if send_msg_mail:
@@ -47,6 +60,8 @@ def notify_mail(req):
     users = get_user_model()
     persons = users.objects.all()
     send_notify = ''
+    list_result_test = []
+
 
     for person in persons:
         send_notify = send_mail(f'Вас привествует, 14 школа!',

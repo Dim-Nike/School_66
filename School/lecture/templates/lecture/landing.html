@@ -28,19 +28,15 @@
             <h1>{{ title }}</h1>
         </div>
 {% block content %}
-    {% if user.is_authenticated %}
-            <h1>{{ user.username }}</h1>
-    {% endif %}
-    {% if user.is_superuser %}
-        <h1>Супер юзер</h1>
-    {% endif %}
+
+
         <h1 class="land">{{ title_page }}</h1>
             <div class="subjects">
             {% for subject in subjects %}
                 {% if subject.userClass == user.catClassUser %}
                     <div class="subject">
                         <div class="sab">
-                            <a href="{% url 'details_lecture' subject.id%}">{{ subject.name_subjects }}</a>
+                            <a href="{% url 'details_lecture' subject.id %}">{{ subject.name_subjects }}</a>
                             <p><img src="{{ subject.subjects.url }}" alt=""></p>
                         </div>
                     </div>

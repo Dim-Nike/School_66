@@ -19,25 +19,21 @@
 
 
 <body>
+    <section class="topic_body">
     <header id="header" class="header_shab">
         <div class="container">
-        <div class="Nams">
+        <div class="Name">
             <h1>Уведомления</h1>
-            <img src="{% static 'lecture/img/Nums.svg'%}">
         </div>
         </div>
     </header>
-    <section id="about" class="about_shab">
-        <div class="container">
-
-        </div>
-    </section>
+    
 <main>
     {% block content %}
     {% endblock %}
 </main>
 <footer id="footer" class="footer_shab">
-    <div class="container">
+    <div class="foot_container">
         <div class="menu">
             <nav class="one">
                 <ul>
@@ -50,5 +46,6 @@
         </div>
     </div>
 </footer>
+</section>
 </body>
 </html>

@@ -18,21 +18,23 @@
 </head>
 
 <body>
+    <section class="auth_body">
     <header id="header" class="header_login">
 
     </header>
 
 
 
-        </div>
-        <h1>{{ title }}</h1>
+        <div class="auth_mainP">
+        <h1>{{ title }}</h1><hr style="color: #fff;">
         <form class="lgform" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button id="login_lg" class="buttonlg">
-                <span>Войти</span>
+                Войти
             </button>
         </form>
+        </div>
     </section>
 </body>
 

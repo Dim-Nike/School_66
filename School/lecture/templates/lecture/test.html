@@ -4,11 +4,15 @@
 
 {% block content %}
 
-{% for el in test %}
-    <h2>Название теста {{ el.name_test }}</h2>
-    <h2>Дата начала теста {{ el.start_date }}</h2>
-    <h2>Дата окончания теста {{ el.end_date }}</h2>
-    <h2>Время прохождения теста {{ distance }} минут</h2>
+{% for el in test %} 
+<div class="test_flex">
+<div class="test_manage">
+    <h2>Название теста: <br> <span class="red_exception">{{ el.name_test }} </span></h2>
+    <h2>Дата начала теста: <br> <span class="red_exception">{{ el.start_date }}</span></h2>
+    <h2>Дата окончания теста:<br> <span class="red_exception">{{ el.end_date }}</span></h2>
+    <h2>Время прохождения теста:<br> <span class="red_exception">{{ distance }} минут </span></h2>
+</div>
+<div class="answer_manage">
     {% for answer in el.answer.all %}
         <h2>{{ answer }}</h2>
     <form action="/result" method="post" name="user_ask">
@@ -17,10 +21,12 @@
         {% for ask in answer.ask.all %}
             <h5><option value="{{ answer }}||{{ ask }}">{{ ask }}</option></h5>
         {% endfor %}
-        </select></h5>
-
-    {% endfor %}
-        <p><input type="submit" value="Сохранить" name="ask"></p>
+        </select></h5><hr style="color: #fff;">
+        
+        {% endfor %}
+    </div>
+    </div>
+        <p class="success_save"><input type="submit" value="Сохранить" name="ask"></p>
     </form>
 
 {% endfor %}

@@ -3,11 +3,13 @@
 {% block title %}{{ data.title }}{% endblock %}
 
 {% block content %}
+<div class="whole_page">
 
-<ul>
-    <li><h5>Наименование теста - {{ result_test.test }}</h5></li>
-    <li><h5>Дата прохождения теста - {{ result_test.date }}</h5></li>
-    <li><h5>Время прохождения теста - {{ result_test.date_user }}</h5></li>
-    <li><h5>Количество баллов - {{ result_test.result_test }}</h5></li>
-</ul>
+<div class="ul">
+    <div class="li"><h5>Наименование теста - <span class="green_exception">{{ result_test.test }}</span></h5></div>
+    <div class="li"><h5>Дата прохождения теста - <span class="green_exception">{{ result_test.date }}</span></h5></div>
+    <div class="li"><h5>Время прохождения теста - <span class="green_exception">{{ result_test.date_user }}</span></h5></div>
+    <div class="li"><h5>Количество баллов - <span class="green_exception">{{ result_test.result_test }}</span></h5></div>
+</div>
 {% endblock %}
+</div>

@@ -7,19 +7,23 @@
 <h1>{{ title }}</h1>
 <div>
     <div class="prarea">
-      <p class="user_data-primary"> {{ user.first_name }}</p>
-      <p class="user_data-primary"> {{ user.last_name }}</p>
-      <p class="user_data-primary">Класс: {{ catClassUser }}</p>
-      <p class="user_data-secondary"> {{ user.username }}</p>
-      <p class="user_data-secondary"> {{ user.email }}</p>
-
-      <p>Фото: <img src="{{ user.user_photo.url }}" alt="">{{ user.photo }}</p>
+        <div class="stable">
+            <p class="user_data-primary"> First Name :- <span class="red_exception">{{ user.first_name }}</span></p>
+            <p class="user_data-primary"> Last Name :- <span class="red_exception">{{ user.last_name }}</span></p>
+      <p class="user_data-primary">Класс :- <span class="red_exception">{{ catClassUser }}</span></p>
+      <p class="user_data-secondary"> Username :- <span class="red_exception">{{ user.username }}</span></p>
+      <p class="user_data-secondary"> Email :- <span class="red_exception">{{ user.email }}</span></p>
+      {% if user.is_superuser %}
+         <a href="{% url 'send_notify' %}" class="btn btn-primary">Уведомить</a>
+         <a href="{% url 'send_mail' %}" class="btn btn-warning">Отправить почту</a>
+         {% endif %}
+    </div>
+    
+    <div class="right_flex">
+      <h2>Фото: <img src="{{ user.user_photo.url }}" alt="">{{ user.photo }}</h2>
+    </div>
 <!--     todo   доделать фото-->
 
-     {% if user.is_superuser %}
-        <a href="{% url 'send_notify' %}" class="btn btn-primary">Уведомить</a>
-        <a href="{% url 'send_mail' %}" class="btn btn-warning">Отправить почту</a>
-        {% endif %}
     </div>
 </div>
 

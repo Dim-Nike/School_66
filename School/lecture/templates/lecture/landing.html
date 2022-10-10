@@ -15,17 +15,10 @@
 
 </head>
         <header id="header" class="header_land">
-            <div class="container">
-                <div class="btnland">
-                    <button id="login" class="button">
-                        <span>Личный кабинет</span>
-                    </button>
-                </div>
-            </div>
         </header>
-{% block title %}{{ title }}{% endblock %}
         <div class="features">
-            <h1>{{ title }}</h1>
+{% block title %} <h1> {{ title }} </h1>{% endblock %}
+            
         </div>
 {% block content %}
 
@@ -37,7 +30,7 @@
                     <div class="subject">
                         <div class="sab">
                             <a href="{% url 'details_lecture' subject.id %}">{{ subject.name_subjects }}</a>
-                            <p><img src="{{ subject.subjects.url }}" alt=""></p>
+                            <img src="{{ subject.subjects.url }}" alt="">
                         </div>
                     </div>
                 {% endif %}
@@ -48,16 +41,16 @@
 {% endblock %}
 <footer id="footer" class="footer_land">
     <div class="container">
-        <div class="menu">
+        
             <nav class="one">
-                <ul>
+                <ul class="common" >
                     <a href="{% url 'landing' %}"><object id="test_1" type="image/svg+xml" data="{% static 'lecture/img/Icon.svg'%}"></object></a>
                     <a href=""><object id="test_2" type="image/svg+xml" data="{% static 'lecture/img/Personalarea.svg'%}"></object></a>
                     <a href=""><object id="test_3" type="image/svg+xml" data="{% static 'lecture/img/Tests.svg'%}"></object></a>
                     <a href="{% url 'title_news' %}"><object id="test_4" type="image/svg+xml" data="{% static 'lecture/img/Nums.svg'%}"></object></a>
                 </ul>
             </nav>
-        </div>
+        
     </div>
 </footer>
 </body>

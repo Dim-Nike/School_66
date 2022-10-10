@@ -5,36 +5,42 @@
 {% for lesson in lessons %}
 
 <div class="detailstudy">
-    <h1>{{ lesson.title }}</h1>
-    <h2>{{ lesson.subtitle }}</h2>
-    <p>{{ lesson.full_text }}</p>
+    <div class="beauty">
+    <h1>{{ lesson.title }}</h1><hr>
+    <h2>{{ lesson.subtitle }}</h2><hr>
+    <p>{{ lesson.full_text }}</p><hr>
     <h3>Проверь себя!</h3>
-</div>
+
+
 {% if lesson.cards %}
 <div class="kartochkayes">
     <img src="{{ lesson.cards.url }}" alt="">
-</div>s
+</div>
+</div>
+</div>
 {% else %}
 <div class="kartochkano">
     <p>Фотографии нет</p>
 </div>
 {% endif %}
 <div class="detailstdata">
-    <p>{{ lesson.date }}</p>
-</div>
+    
+
 <div class="detailstbtn">
     {% if now_time < test_time %}
         {% if count_attempt >= 1 %}
             <button class="lecturebtn">
-                    <a href="{% url 'test' lesson.test.id %}"><p>Пройти тест</p></a>
-                    <h3>У тебя осталось {{ count_attempt }} попытки</h3>
-            </button>
+                    <a href="{% url 'test' lesson.test.id %}"><p class="btn btn-success">Пройти тест</p></a>
+                </button>
+                <h3>У тебя осталось <span class="count_attempt"> {{ count_attempt }} </span> попытки</h3>
         {% else %}
             <h2>Тест недоступен, попытки закончены</h2>
         {% endif %}
     {% else %}
         <h1>Время теста истекло!</h1>
     {% endif %}
+    <p>{{ lesson.date }}</p>
+</div>
 </div>
 {% endfor %}
 

@@ -16,11 +16,11 @@
     <link rel="stylesheet" href='https://use.fontawesome.com/releases/v5.8.2/css/all.css'>
     <title>{{ title_page }}</title>
 </head>
-
+<section class="registration_body">
 {% block title %}{{ title_page }}{% endblock %}
 
 {% block content %}
-
+<div class="regis_common">
 <h2 class="rgh2">{{ title }}</h2>
 
 <form class="regform" method="post">
@@ -30,8 +30,9 @@
         <div class="form-error">{{ el.errors }}</div>
     {% endfor %}
     <button id="login_rg" class="buttonrg">
-        <span>Зарегистрироваться</span>
+        Зарегистрироваться
     </button>
 </form>
-
+</div>
+</section>
 {% endblock %}

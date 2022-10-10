@@ -10,7 +10,7 @@ id_test = 0
 
 def landing(req):
     data = {
-        'title': '',
+        'title': 'Предметы',
         'title_page': 'Ваши предметы',
         'subjects': Subject.objects.order_by('name_subjects')
     }

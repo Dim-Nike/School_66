@@ -3,16 +3,18 @@
 {% block title %}Новости{% endblock %}
 
 {% block content %}
+<div class="new_flex">
 {% for new in news %}
 <div class="section">
-    <spon>
-        <h1>{{ new.title }}</h1>
+        <div>
+        <h1>{{ new.title }}</h1><hr style="margin: 0 8px 0 8px; color: #fff;">
         <h2>{{ new.subtitle }}</h2>
         <p>{{ new.date }}</p>
-        <a href="{% url 'detail-news' new.id %}" class="btn btn-primary">Подробнее</a>
-    </spon>
-</div>
+    </div>
+        <a href="{% url 'detail-news' new.id %}" class="style-btn"> <span class="cent_btn"> Подробнее </span></a>
+    
 </div>
 {% endfor %}
+</div>
 
 {% endblock %}

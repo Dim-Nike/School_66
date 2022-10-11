@@ -55,18 +55,25 @@ def detailLesson(req, sub_id):
     test_result = TestResult.objects.order_by('date')
     count_attempt = lecture_material[0].test.attempts
 
+    def check_attempt(user, test):
+        global count_attempt
+        for result in test:
+            if result.test == lecture_material[0].test.name_test:
+                # user = req.user.first_name + ' ' + req.user.last_name
+                if result.user == user:
+                    count_attempt -= 1
+
     for result in test_result:
         if result.test == lecture_material[0].test.name_test:
             user = req.user.first_name + ' ' + req.user.last_name
             if result.user == user:
                 count_attempt -= 1
 
+    # check_attempt(user=req.user.first_name + ' ' + req.user.last_name, test=test_result)
+
     now_time = datetime.datetime.now()
-    print(f'{type(now_time)}||{type(lecture_material[0].test.end_date)}')
-    if now_time.timestamp() > lecture_material[0].test.end_date.timestamp():
-        print('Время теста истекло!')
-    else:
-        print('Пройти тест')
+
+
 
     data = {
         'lessons': Lecture.objects.filter(id=sub_id).order_by('date'),
@@ -81,16 +88,31 @@ def detailLesson(req, sub_id):
 
 def show_test(req, sub_id):
     global id_test
+    lecture_material = Lecture.objects.filter(id=sub_id).order_by('date')
+    test_result = TestResult.objects.order_by('date')
+    count_attempt = lecture_material[0].test.attempts
     id_test = sub_id
 
-    data = {
-        'test': Test.objects.filter(id=sub_id).order_by('start_date'),
-        'title_page': 'Тест',
-        'title': 'Тест'
-    }
+    for result in test_result:
+        if result.test == lecture_material[0].test.name_test:
+            user = req.user.first_name + ' ' + req.user.last_name
+            if result.user == user:
+                count_attempt -= 1
+
+    if count_attempt <= 0:
+        return redirect('landing')
+    else:
+
+        test = Test.objects.filter(id=sub_id).order_by('start_date')
+
+        data = {
+            'test': test,
+            'title_page': 'Тест',
+            'title': 'Тест'
+        }
 
 
-    return render(req, 'lecture/test.html', data)
+        return render(req, 'lecture/test.html', data)
 
 
 def show_result_test(req):
@@ -101,11 +123,8 @@ def show_result_test(req):
     count_mark_test = 0
     test = Test.objects.filter(id=id_test).order_by('start_date')
 
-    print(f'Now data - {now_data}')
-
     if req.method == 'POST':
         val = req.POST.getlist("list")
-
 
         for el in val:
             answer = el.partition("||")[0]

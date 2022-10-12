@@ -50,7 +50,7 @@ body{
   gap: 10px 40px;
   background: #2e2e2e;
   padding: 0;
-  margin: 0;
+  margin-bottom: 100px;
   /* border: 1px solid yellow; */
 }
 
@@ -90,31 +90,45 @@ body{
 }
 
 .footer_land{
-  background-color: #2e2e2e;
-  margin: auto;
-  padding: 30px;
+  align-items: center;
   /* border: 1px solid red; */
-  text-align: center;
+  background: #2e2e2e;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 .container{
   /* border: 1px solid yellow; */
   border-radius: 10px;
   background-color: rgba(81, 81, 81, 0.4);
-  padding: 0px;
+  padding: 15px;
+  width: 90%;
+  margin: auto;
   justify-content: center;
+  text-align: center;
 }
 .container nav.one{
   /* border: 1px solid green; */
+  width: 80%;
   padding-top: 20px;
+  margin: auto;
+}
+
+.common {
+  width: auto;
+  /* border: 1px solid red; */
+  /* border-radius: 50%; */
+  /* height: 50px; */
+  /* background: #fff; */
+  margin: 0;
+  padding: 0;
 }
 
 .common a{
   /* border: 1px solid red; */
-  border-radius: 50%;
-  width: 50px;
-  /* background: #fff; */
-  margin: 50px;
+  padding-top: 29px;
+  padding-bottom: 3px;
 }
 
 .common a:hover{
@@ -363,7 +377,7 @@ body{
 .foot_container{
   /* border: 1px solid yellow;  */
   border-radius: 10px;
-  background-color: rgba(81, 81, 81, 0.4);
+  background-color: rgba(81, 81, 81, 0.8);
   padding: 10px;
   width: 90%;
   margin: auto;
@@ -383,8 +397,23 @@ body{
   /* border: 1px solid red; */
   margin-left: 20px;
   width: 100%;
+  color: #fff;
+  padding-top: 25px;
   margin: 25px;
+  position: relative; 
+  fill:red;
+  z-index: 1;
 }
+
+.one ul a span object{
+  position: relative; 
+  /* border: 1px solid yellow; */
+  z-index: -1;
+}
+#test {
+  /* border: 1px solid yellow; */
+}
+
 
 .one ul a:hover{
   position: relative;
@@ -554,7 +583,8 @@ body{
   font-size: 25px;
   font-weight: 400;
   /* border: 1px solid red; */
-  margin: 5px 0 5px 0; ;
+  margin: 5px 0 5px 0;
+  user-select: none;
 }
 
 .answer_manage h5 select{

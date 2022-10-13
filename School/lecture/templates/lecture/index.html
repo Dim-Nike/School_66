@@ -38,8 +38,8 @@
             <nav class="one">
                 <ul>
                   <a href="{% url 'landing' %}"><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Icon.svg'%}"></object></span></a>
-                  <a href=""><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Personalarea.svg'%}"></object></span></a>
-                  <a href=""><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Tests.svg'%}"></object></span></a>
+                  <a href="{% url 'account' %}"><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Personalarea.svg'%}"></object></span></a>
+                  <!-- <a href=""><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Tests.svg'%}"></object></span></a> -->
                   <a href="{% url 'title_news' %}"><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Nums.svg'%}"></object></span></a>
                 </ul>
             </nav>

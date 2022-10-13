@@ -401,7 +401,6 @@ body{
   padding-top: 25px;
   margin: 25px;
   position: relative; 
-  fill:red;
   z-index: 1;
 }
 
@@ -410,10 +409,6 @@ body{
   /* border: 1px solid yellow; */
   z-index: -1;
 }
-#test {
-  /* border: 1px solid yellow; */
-}
-
 
 .one ul a:hover{
   position: relative;

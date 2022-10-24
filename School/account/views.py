@@ -22,25 +22,31 @@ def send_msg(req):
     persons = users.objects.all()
     test_result = TestResult.objects.order_by('test')
 
-    for show in test_result:
+    # for show in test_result:
+    #
+    #     print(f'Test - {show.test}\n'
+    #           f'User - {show.user}\n'
+    #           f'Date - {show.date}\n'
+    #           f'Result test - {show.result_test}\n\n')
 
-        print(f'Test - {show.test}\n'
-              f'User - {show.user}\n'
-              f'Date - {show.date}\n'
-              f'Result test - {show.result_test}\n\n')
-
-    for person in persons:
-        print(f'Имя: {person.username}')
+    # for person in persons:
+    #     print(f'Имя: {person.username}')
 
     send_msg_mail = ''
 
-    result = ''
-    for person in persons:
-        for show in test_result:
-            if person.first_name + " " + person.last_name == show.user:
-                result += f'Наименование теста - {show.test}\nПользователь - {show.user}\nДата прохождения теста - {show.date}\nКоличество баллов - {show.result_test}\n\n'
+
+    # for person in persons:
+    #     for show in test_result:
+    #         if person.first_name + " " + person.last_name == show.user:
+    #             result += f'Наименование теста - {show.test}\nПользователь - {show.user}\nДата прохождения теста - {show.date}\nКоличество баллов - {show.result_test}\n\n'
 
     for person in persons:
+        result = ''
+        for person in persons:
+            for show in test_result:
+                if person.first_name + " " + person.last_name == show.user:
+                    result += f'Наименование теста - {show.test}\nПользователь - {show.user}\nДата прохождения теста - {show.date}\nКоличество баллов - {show.result_test}\n\n'
+
         send_msg_mail = send_mail(f'Вас привествует, 14 школа!',
                                   f'Добрый день, {person.last_name} {person.first_name}\n'
                                   f'Ваш логин: {person.username}\n'
@@ -61,7 +67,6 @@ def notify_mail(req):
     persons = users.objects.all()
     send_notify = ''
     list_result_test = []
-
 
     for person in persons:
         send_notify = send_mail(f'Вас привествует, 14 школа!',

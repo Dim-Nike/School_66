@@ -6,7 +6,7 @@ body{
   margin: 0px;
   position: relative;
 }
-
+cd
 .features{
   margin: 0;
   padding: 0;
@@ -554,7 +554,8 @@ body{
   font-size: 25px;
   font-weight: 400;
   /* border: 1px solid red; */
-  margin: 5px 0 5px 0; ;
+  margin: 5px 0 5px 0;
+  user-select: none;
 }
 
 .answer_manage h5 select{

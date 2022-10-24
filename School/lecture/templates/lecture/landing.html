@@ -30,7 +30,7 @@
                     <div class="subject">
                         <div class="sab">
                             <a href="{% url 'details_lecture' subject.id %}">{{ subject.name_subjects }}</a>
-                            <img src="{{ subject.subjects.url }}" alt="">
+                            <img src="{{ subject.subjects_photo.url }}" alt="">
                         </div>
                     </div>
                 {% endif %}

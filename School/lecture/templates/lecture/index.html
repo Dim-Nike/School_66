@@ -19,7 +19,7 @@
 
 
 <body>
-<section class="topic_body">
+    <section class="topic_body">
     <header id="header" class="header_shab">
         <div class="container">
             <div class="Name">
@@ -28,24 +28,24 @@
         </div>
     </header>
     
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-    <footer id="footer" class="footer_shab">
-        <div class="foot_container">
-            <div class="menu">
-                <nav class="one">
-                    <ul>
-                      <a href="{% url 'landing' %}"><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Icon.svg'%}"></object></a>
-                      <a href=""><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Personalarea.svg'%}"></object></a>
-                      <a href=""><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Tests.svg'%}"></object></a>
-                      <a href="{% url 'title_news' %}"><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Nums.svg'%}"></object></a>
-                    </ul>
-                </nav>
-            </div>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer id="footer" class="footer_shab">
+    <div class="foot_container">
+        <div class="menu">
+            <nav class="one">
+                <ul>
+                  <a href="{% url 'landing' %}"><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Icon.svg'%}"></object></span></a>
+                  <a href="{% url 'account' %}"><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Personalarea.svg'%}"></object></span></a>
+                  <!-- <a href=""><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Tests.svg'%}"></object></span></a> -->
+                  <a href="{% url 'title_news' %}"><span><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Nums.svg'%}"></object></span></a>
+                </ul>
+            </nav>
         </div>
-    </footer>
+    </div>
+</footer>
 </section>
 </body>
 </html>

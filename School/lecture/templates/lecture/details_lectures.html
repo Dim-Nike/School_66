@@ -1,11 +1,11 @@
 {% extends 'lecture/index.html' %}
 
-{% block title %}{{ data.title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    
-    {{ lecture.full_text }}
-        <div class="ramka">
+    {% block header%}{{ title }}{% endblock %}
+
+<div class="ramka">
     {% for lecture in lectures %}
         {% if lecture.is_active %}
             <div class="studymaterials"> 
@@ -14,7 +14,6 @@
             </div>
         {% endif %}
     {% endfor %}
-
-        </div>
+</div>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'lecture/index.html' %}
 
-{% block title %}{{ data.title }}{% endblock %}
-
+{% block title %}{{ title }}{% endblock %}
+{% block header%}{{ title }}{% endblock %}
 {% block content %}
 
 {% for el in test %} 

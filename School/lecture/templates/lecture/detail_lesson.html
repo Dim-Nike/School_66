@@ -1,5 +1,6 @@
 {% extends 'lecture/index.html' %}
-
+{% block title %}{{ title_page }}{% endblock %}
+{% block header%}{{ title }}{% endblock %}
 {% block content %}
 
 {% for lesson in lessons %}

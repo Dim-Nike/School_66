@@ -11,7 +11,7 @@ id_test = 0
 def landing(req):
     data = {
         'title': 'Предметы',
-        'title_page': 'Ваши предметы',
+        'title_page': 'Главная страница',
         'subjects': Subject.objects.order_by('name_subjects')
     }
     if CustomUser.is_authenticated:
@@ -22,8 +22,8 @@ def landing(req):
 
 def lecture(req):
     data = {
-        'title_page': 'Лекции',
-        'title': 'Страница с темами лекций'
+        'title_page': 'Темы лекций',
+        'title': 'Лекции'
     }
 
     return render(req, 'lecture/details_lectures.html', data)
@@ -76,6 +76,8 @@ def detailLesson(req, sub_id):
 
 
     data = {
+        'title_page': 'Тема урока',
+        'title': 'Урок',
         'lessons': Lecture.objects.filter(id=sub_id).order_by('date'),
         'count_attempt': count_attempt,
         'now_time': now_time.timestamp(),
@@ -157,7 +159,7 @@ def show_result_test(req):
         # print(result_test)
 
         data = {
-            'title_name': 'Результат тестов',
+            'title': 'Результат теста',
             'result_test': result_test
         }
 

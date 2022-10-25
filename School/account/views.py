@@ -51,7 +51,6 @@ def send_msg(req):
                                   f'Добрый день, {person.last_name} {person.first_name}\n'
                                   f'Ваш логин: {person.username}\n'
                                   f'Ваш класс: {person.catClassUser}\n'
-                                  f'Ваш пароль: {person.password}\n'
                                   f'Информация о тестах\n\n{result}',
                                   'officialtriggermobile@gmail.com',
                                   [person.email], fail_silently=False)

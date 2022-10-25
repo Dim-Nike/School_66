@@ -19,33 +19,33 @@
 
 
 <body>
-    <section class="topic_body">
+<section class="topic_body">
     <header id="header" class="header_shab">
         <div class="container">
-        <div class="Name">
-            <h1>Уведомления</h1>
-        </div>
+            <div class="Name">
+                <h1>{% block header%}{% endblock %}</h1>
+            </div>
         </div>
     </header>
     
-<main>
-    {% block content %}
-    {% endblock %}
-</main>
-<footer id="footer" class="footer_shab">
-    <div class="foot_container">
-        <div class="menu">
-            <nav class="one">
-                <ul>
-                  <a href="{% url 'landing' %}"><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Icon.svg'%}"></object></a>
-                  <a href=""><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Personalarea.svg'%}"></object></a>
-                  <a href=""><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Tests.svg'%}"></object></a>
-                  <a href="{% url 'title_news' %}"><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Nums.svg'%}"></object></a>
-                </ul>
-            </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer id="footer" class="footer_shab">
+        <div class="foot_container">
+            <div class="menu">
+                <nav class="one">
+                    <ul>
+                      <a href="{% url 'landing' %}"><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Icon.svg'%}"></object></a>
+                      <a href=""><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Personalarea.svg'%}"></object></a>
+                      <a href=""><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Tests.svg'%}"></object></a>
+                      <a href="{% url 'title_news' %}"><object id="test" type="image/svg+xml" data="{% static 'lecture/img/Nums.svg'%}"></object></a>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </section>
 </body>
 </html>

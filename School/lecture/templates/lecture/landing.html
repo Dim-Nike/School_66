@@ -17,14 +17,14 @@
 </head>
 <header id="header" class="header_shab">
         <div class="container">
+            <div class="features">
             <div class="Name">
                 <h1>{{ title_page }}</h1>
             </div>
         </div>
+    </div>
 </header>
-        <div class="features">
             
-        </div>
 {% block content %}
 
 
@@ -33,9 +33,10 @@
             {% for subject in subjects %}
                 {% if subject.userClass == user.catClassUser %}
                     <div class="subject">
+                        <!-- <img src="" alt=""> -->
                         <div class="sab">
+                            <img src="{{ subject.subjects_photo.url }}" alt="">
                             <a href="{% url 'details_lecture' subject.id %}">{{ subject.name_subjects }}</a>
-<!--                            <img src="{{ subject.subjects_photo.url }}" alt="">-->
                         </div>
                     </div>
                 {% endif %}

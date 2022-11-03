@@ -14,16 +14,19 @@
 </div>
 <div class="answer_manage">
     {% for answer in el.answer.all %}
-        <h2>{{ answer }}</h2>
+    <h2>{{ answer }}</h2>
     <form action="/result" method="post" name="user_ask">
         {% csrf_token %}
-        <h5><select name="list">
-        {% for ask in answer.ask.all %}
-            <h5><option value="{{ answer }}||{{ ask }}">{{ ask }}</option></h5>
-        {% endfor %}
-        </select></h5><hr style="color: #fff;">
-        
-        {% endfor %}
+        <!-- <h5><select name="list"> -->
+            {% for ask in answer.ask.all %}
+            <!-- <h5><option value="{{ answer }}||{{ ask }}">{{ ask }}</option></h5> -->
+            <h5><input type="radio" class="radio_btn" value="{{ answer }}||{{ ask }}">{{ ask }}</h5>
+            {% endfor %}
+            <!-- </select></h5><hr style="color: #fff;"> -->
+            <div class="brdr_btm">
+            
+            {% endfor %}
+        </div>
     </div>
     </div>
         <p class="success_save"><input type="submit" value="Сохранить" name="ask"></p>

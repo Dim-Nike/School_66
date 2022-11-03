@@ -1,3 +1,7 @@
+import random
+import threading
+from asyncio import sleep
+
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from .models import *
@@ -7,6 +11,8 @@ import datetime
 from User.models import CustomUser
 
 id_test = 0
+start_time_test = 0
+
 
 def landing(req):
     data = {
@@ -30,9 +36,6 @@ def lecture(req):
 
 
 def detailLectureTopic(req, sub_id):
-
-
-
     data = {
         'lectures': Lecture.objects.filter(cat_id=sub_id).order_by('-date'),
         'test_result': TestResult.objects.order_by('date'),
@@ -83,14 +86,70 @@ def detailLesson(req, sub_id):
 
 def show_test(req, sub_id):
     global id_test
+    global start_time_test
+    time_minute_test = 0
+
+    now_time = str(datetime.datetime.now())
     id_test = sub_id
+    test = Test.objects.filter(id=sub_id).order_by('start_date')
+    time_minute_test = test[0].distance
+    now_time_int = int(now_time[14] + now_time[15])
+    test_dict = {}
+    answer_list = []
+
+
+
+    # for i_answer, el_answer in enumerate(test[0].answer.all()):
+    #     ask_list = []
+    #     if i_answer + 1 > test[0].count_answer:
+    #         print(i_answer)
+    #         break
+    #     answer_list.append(el_answer)
+    #     for i_ask, el_ask in enumerate(el_answer.ask.all()):
+    #         if i_ask + 1 > el_answer.count_ask:
+    #             print(i_ask)
+    #             break
+    #         ask_list.append(el_ask)
+    #     answer_dict[el_answer] = ask_list
+
+    for el_answer in enumerate(test[0].answer.all()):
+        answer_list.append(el_answer)
+    random_answer_list = random.sample(answer_list, test[0].count_answer)
+    for el_answer in random_answer_list:
+        ask_list = []
+        for el_ask in el_answer[1].ask.all():
+            ask_list.append(el_ask)
+
+        ask_list = random.sample(ask_list, el_answer[1].count_ask)
+        test_dict[el_answer] = ask_list
+
+    print(test_dict)
+
+
+    # print(answer_dict)
+    # print(answer_list)
+    # print(ask_list)
+
+    # print(answer_list[0])
+
+    # def check_time_test(time_test, time_minute_test):
+    #     time_minute_test -= 1
+    #     print(time_minute_test)
+    #     if time_minute_test <= 0:
+    #         print('Время вышло')
+    #         return 0
+    #     if not time_test.is_set():
+    #         threading.Timer(1, check_time_test, [time_test, time_minute_test]).start()
+    #
+    # time_test = threading.Event()
+    #
+    # show = check_time_test(time_test=time_test, time_minute_test=time_minute_test)
 
     data = {
         'test': Test.objects.filter(id=sub_id).order_by('start_date'),
         'title_page': 'Тест',
         'title': 'Тест'
     }
-
 
     return render(req, 'lecture/test.html', data)
 
@@ -107,7 +166,6 @@ def show_result_test(req):
 
     if req.method == 'POST':
         val = req.POST.getlist("list")
-
 
         for el in val:
             answer = el.partition("||")[0]
@@ -153,4 +211,3 @@ def show_result_test(req):
 #     logout(req)
 #     print(f'Я вышел с аккаунта')
 #
-

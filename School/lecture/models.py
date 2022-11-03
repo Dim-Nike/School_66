@@ -65,6 +65,7 @@ class Answer(models.Model):
     name = models.CharField(verbose_name='Наименование вопроса', max_length=255)
     ask = models.ManyToManyField(Ask, verbose_name='Список вопросов')
     mark = models.IntegerField(verbose_name='Балл')
+    count_ask = models.IntegerField(verbose_name='Количество ответов')
 
     def __str__(self):
         return self.name
@@ -86,6 +87,7 @@ class Test(models.Model):
     is_active = models.BooleanField('Опубликован', null=True)
     answer = models.ManyToManyField(Answer, verbose_name='Вопросы')
     attempts = models.IntegerField(verbose_name='Попытки', max_length=10)
+    count_answer = models.IntegerField(verbose_name='Количество вопросов')
 
     def __str__(self):
         return self.name_test

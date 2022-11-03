@@ -4,7 +4,17 @@
 {% block header%}{{ title }}{% endblock %}
 {% block content %}
 
-{% for el in test %} 
+<!--{% for answer in test %}-->
+
+<!--    <h1>{{ answer }}</h1>-->
+<!--     for ask in test[][answer] -->
+<!--        <h3>{{ ask }}</h3>-->
+<!--     endfor -->
+
+<!--{% endfor %}-->
+
+
+{% for el in test %}
 <div class="test_flex">
 <div class="test_manage">
     <h2>Название теста: <br> <span class="red_exception">{{ el.name_test }} </span></h2>
@@ -32,6 +42,6 @@
         <p class="success_save"><input type="submit" value="Сохранить" name="ask"></p>
     </form>
 
-{% endfor %}
+{% endfor %}я
 
 {% endblock %}
